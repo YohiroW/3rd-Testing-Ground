@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Poseidon",
+	"Description": "Simulate water/ocean",
+	"Category": "Other",
+	"CreatedBy": "Yohiro Wang",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "Poseidon",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
