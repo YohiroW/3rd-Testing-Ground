@@ -26,6 +26,7 @@ public class Poseidon : ModuleRules
 			new string[]
 			{
 				"Core",
+				"RenderCore"
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
@@ -38,6 +39,7 @@ public class Poseidon : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+				"Projects"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
