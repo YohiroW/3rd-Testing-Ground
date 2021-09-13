@@ -31,7 +31,7 @@ public class Poseidon : ModuleRules
                 "RHI",
                 "Engine",
                 "RenderCore",
-                "ShaderCore"
+                //"ShaderCore" // has been merged in to module RenderCore ?
 				// ... add other public dependencies that you statically link with here ...
             }
             );
