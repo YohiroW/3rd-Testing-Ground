@@ -26,10 +26,15 @@ public class Poseidon : ModuleRules
 			new string[]
 			{
 				"Core",
-				"RenderCore"
+                "CoreUObject",
+                "Engine",
+                "RHI",
+                "Engine",
+                "RenderCore",
+                "ShaderCore"
 				// ... add other public dependencies that you statically link with here ...
-			}
-			);
+            }
+            );
 			
 		
 		PrivateDependencyModuleNames.AddRange(
