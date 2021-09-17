@@ -33,6 +33,60 @@ void FPoseidonEditor::ShutdownModule()
 	// we call this function before unloading the module.
 }
 
+void FPoseidonEditor::ExtendMenu()
+{
+	if (IsRunningCommandlet())
+		return;
+
+	MenuExtender = MakeShareable(new FExtender);
+
+	// Added section of mine 
+	MenuExtender->AddMenuExtension(
+		"TestPoseidon",
+		EExtenderHook::After,
+		PoseidonUICommands,
+		FMenuExtensionDelegate::CreateRaw(this, &FPoseidonEditor::AddPoseidonMainMenuExtension)
+	);
+
+	MenuExtender->AddMenuBarExtension(
+		"EditPoseidon",
+		EExtenderHook::After,
+		PoseidonUICommands,
+		FMenuBarExtensionDelegate::CreateRaw(this, &FPoseidonEditorMenu::AddPoseidonEditorMenu)
+	);
+
+	FLevelEditorModule& levelEditorModule = FModuleManager::LoadModuleChecked<FLevelEditorModule>("LevelEditor");
+	levelEditorModule.GetMenuExtensibilityManager()->AddExtender(MenuExtender);
+}
+
+void FPoseidonEditor::AddPoseidonEditorMenu(FMenuBarBuilder& builder)
+{
+	// View
+	builder.AddPullDownMenu(
+		LOCTEXT("PoseidonLabel", "Poseidon"),
+		LOCTEXT("PoseidonMenu_ToolTip", "Open menu"),
+		FNewMenuDelegate::CreateRaw(this, &FPoseidonEditor::AddPoseidonMainMenuExtension),
+		"View");
+}
+
+void FPoseidonEditor::AddPoseidonMainMenuExtension(FMenuBuilder& builder)
+{
+	builder.BeginSection("Session", LOCTEXT("SessionLabel", "Session"));
+
+	// Insert UI commands below
+
+}
+
+void FPoseidonEditor::AddPoseidonFileMenuExtension(FMenuBuilder& builder)
+{
+	builder.BeginSection("Poseidon", LOCTEXT("PoseidonLabel", "Poseidon"));
+
+	// Insert UI commands below
+
+}
+
+
+
 #undef LOCTEXT_NAMESPACE
 
 IMPLEMENT_MODULE(FPoseidonEditorModule, Poseidon)

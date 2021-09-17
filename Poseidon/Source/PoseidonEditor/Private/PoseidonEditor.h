@@ -7,6 +7,8 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
+class FExtender;
+
 class POSEIDONEDITOR_API FPoseidonEditor : public IPoseidonEditor
 {
 public:
@@ -64,10 +66,22 @@ public:
 	// Returns the plugin's directory
 	static FString GetPoseidonPluginDir();
 
+// Begin menu extension
+	void AddPoseidonMainMenuExtension(FMenuBuilder& builder);
+	void AddPoseidonFileMenuExtension(FMenuBuilder& builder);
+	void AddPoseidonEditorMenu(FMenuBarBuilder& builder);
+//
+
 private:
 
 	// Nested instance, used internally
 	static FPoseidonEditor* PoseidonEditorInstance;
 	
 	FPoseidonEditor::PoseidonEditorInstance = this;
+
+	//
+	TSharedPtr<FExtender> MenuExtender;
+	//
+	TSharedPtr<class FUICommandList> PoseidonUICommands;
+
 };
