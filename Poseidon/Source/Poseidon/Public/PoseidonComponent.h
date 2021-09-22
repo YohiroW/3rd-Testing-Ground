@@ -48,10 +48,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PoseidonComponent")
 	UTextureRenderTarget2D* OutputRenderTarget2D;
 
-	// Specified uniform buffer data
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PoseidonComponent")
-	FOceanInfo OceanInfoBuffer;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PoseidonComponent")
 	int32 TargetSize;
 
@@ -60,7 +56,7 @@ public:
 private:
 	void CalculateHeightMap_GameThread();
 
-	void CalculateHeightMap_RenderThread(FRHICommandList& RHICmdList, ERHIFeatureLevel::Type featureLevel, FRHITexture* outputRT, int32 surfaceSize, const FOceanInfo& oceanInfo);
+	void CalculateHeightMap_RenderThread(FRHICommandList& RHICmdList, ERHIFeatureLevel::Type featureLevel, FRHITexture* outputRT, int32 surfaceSize);
 
 private:
 	FTexture2DRHIRef OutputTexture;

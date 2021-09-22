@@ -63,7 +63,7 @@ void UPoseidonComponent::CalculateHeightMap_GameThread()
 {
 }
 
-void UPoseidonComponent::CalculateHeightMap_RenderThread(FRHICommandList& RHICmdList, ERHIFeatureLevel::Type featureLevel, FRHITexture* outputRT, int32 surfaceSize, const FOceanInfo& oceanInfo)
+void UPoseidonComponent::CalculateHeightMap_RenderThread(FRHICommandList& RHICmdList, ERHIFeatureLevel::Type featureLevel, FRHITexture* outputRT, int32 surfaceSize)
 {
 }
 
