@@ -10,14 +10,16 @@ public class PoseidonEditor : ModuleRules
 
 		PublicIncludePaths.AddRange(
             new string[] {
-                Path.Combine(ModuleDirectory, "Public")
-            }
+                Path.Combine(ModuleDirectory, "Public"),
+				"Runtime/Slate/Public/Framework"
+			}
         );
 
         PrivateIncludePaths.AddRange(
             new string[] {
                 "Poseidon/Private",
-            }
+				
+			}
         );
 
         PrivateIncludePathModuleNames.AddRange(

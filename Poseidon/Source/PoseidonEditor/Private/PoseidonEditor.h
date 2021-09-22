@@ -7,6 +7,8 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(LogPoseidonEditor, Log, All);
+
 class FExtender;
 
 class POSEIDONEDITOR_API FPoseidonEditor : public IPoseidonEditor
@@ -38,7 +40,7 @@ public:
 	virtual void RegisterActorFactories() {}
 
 	/** Extend menu. **/
-	virtual void ExtendMenu() {}
+	virtual void ExtendMenu();
 
 	/** Register and unregister thumbnails. **/
 	virtual void RegisterThumbnails() {}
@@ -76,8 +78,6 @@ private:
 
 	// Nested instance, used internally
 	static FPoseidonEditor* PoseidonEditorInstance;
-	
-	FPoseidonEditor::PoseidonEditorInstance = this;
 
 	//
 	TSharedPtr<FExtender> MenuExtender;

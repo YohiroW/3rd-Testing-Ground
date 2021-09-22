@@ -3,6 +3,23 @@
 #include "PoseidonEditor.h"
 #include "Misc/Paths.h"
 #include "Interfaces/IPluginManager.h"
+#include "HAL/PlatformFilemanager.h"
+#include "Misc/MessageDialog.h"
+#include "Misc/Paths.h"
+#include "AssetRegistryModule.h"
+#include "PropertyEditorModule.h"
+#include "Framework/MultiBox/MultiBoxBuilder.h"
+#include "LevelEditor.h"
+#include "Templates/SharedPointer.h"
+#include "Framework/Application/SlateApplication.h"
+#include "HAL/ConsoleManager.h"
+#include "Editor/UnrealEdEngine.h"
+#include "Editor.h"
+#include "UnrealEdGlobals.h"
+#include "Engine/Selection.h"
+#include "Widgets/Input/SCheckBox.h"
+#include "Logging/LogMacros.h"
+#include "MultiBox/MultiBoxExtender.h"
 
 #define LOCTEXT_NAMESPACE "FPoseidonEditorModule"
 
@@ -52,7 +69,7 @@ void FPoseidonEditor::ExtendMenu()
 		"EditPoseidon",
 		EExtenderHook::After,
 		PoseidonUICommands,
-		FMenuBarExtensionDelegate::CreateRaw(this, &FPoseidonEditorMenu::AddPoseidonEditorMenu)
+		FMenuBarExtensionDelegate::CreateRaw(this, &FPoseidonEditor::AddPoseidonEditorMenu)
 	);
 
 	FLevelEditorModule& levelEditorModule = FModuleManager::LoadModuleChecked<FLevelEditorModule>("LevelEditor");
@@ -88,5 +105,3 @@ void FPoseidonEditor::AddPoseidonFileMenuExtension(FMenuBuilder& builder)
 
 
 #undef LOCTEXT_NAMESPACE
-
-IMPLEMENT_MODULE(FPoseidonEditorModule, Poseidon)
