@@ -60,14 +60,14 @@ void FPoseidonEditor::ExtendMenu()
 	// Added section of mine 
 	MenuExtender->AddMenuExtension(
 		"TestPoseidon",
-		EExtenderHook::After,
+		EExtensionHook::After,
 		PoseidonUICommands,
 		FMenuExtensionDelegate::CreateRaw(this, &FPoseidonEditor::AddPoseidonMainMenuExtension)
 	);
 
 	MenuExtender->AddMenuBarExtension(
 		"EditPoseidon",
-		EExtenderHook::After,
+		EExtensionHook::After,
 		PoseidonUICommands,
 		FMenuBarExtensionDelegate::CreateRaw(this, &FPoseidonEditor::AddPoseidonEditorMenu)
 	);
