@@ -12,17 +12,17 @@ class FRHITexture;
 class FRHIUnorderedAccessView;
 class FRHICommandListImmediate;
 
-// As uniform buffer
-USTRUCT(BlueprintType)
-struct FOceanInfo
-{
-	GENERATED_BODY()
-
-	FOceanInfo() {}
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	FVector4 OceanTime;
-};
+//// Old style to declare uniform buffer/params for shader, deprecated.
+//USTRUCT(BlueprintType)
+//struct FOceanInfo
+//{
+//	GENERATED_BODY()
+//
+//	FOceanInfo() {}
+//
+//	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Poseidon")
+//	FVector4 OceanTime;
+//};
 
 UCLASS(HideCategories = (Object, LOD, Physics, Collision), editinlinenew, meta = (BlueprintSpawnableComponent), ClassGroup = Rendering, DisplayName = "PoseidonComponent")
 class POSEIDON_API UPoseidonComponent : public UActorComponent
