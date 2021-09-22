@@ -6,11 +6,9 @@ public class PoseidonEditor : ModuleRules
 {
     public PoseidonEditor( ReadOnlyTargetRules Target ) : base( Target )
     {
-        bPrecompile = true;
-        PCHUsage = PCHUsageMode.NoSharedPCHs;
-        PrivatePCHHeaderFile = "Private/PoseidonEditorPrivatePCH.h";
+		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
-        PublicIncludePaths.AddRange(
+		PublicIncludePaths.AddRange(
             new string[] {
                 Path.Combine(ModuleDirectory, "Public")
             }
