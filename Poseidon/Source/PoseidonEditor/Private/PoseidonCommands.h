@@ -7,7 +7,6 @@
 
 struct FSlowTask;
 
-// Class containing commands for Houdini Engine actions
 class FPoseidonCommands : public TCommands<FPoseidonCommands>
 {
 public:

@@ -7,9 +7,18 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
+#include "CoreTypes.h"
+#include "Templates/SharedPointer.h"
+#include "Framework/Commands/UICommandList.h"
+#include "Brushes/SlateDynamicImageBrush.h"
+
+
 DECLARE_LOG_CATEGORY_EXTERN(LogPoseidonEditor, Log, All);
 
+class FMenuBuilder;
+class FMenuBarBuilder;
 class FExtender;
+class FUICommandList;
 
 class POSEIDONEDITOR_API FPoseidonEditor : public IPoseidonEditor
 {
@@ -76,6 +85,12 @@ public:
 protected:
 	// Binds the commands used by the menus
 	void BindMenuCommands();
+
+	//// Added menu in level editor outline
+	//void AddLevelViewportMenuExtender();
+	//void RemoveLevelViewportMenuExtender();
+	//TSharedRef<FExtender> GetLevelViewportContextMenuExtender(const TSharedRef<FUICommandList> CommandList, const TArray<AActor*> InActors);
+
 
 private:
 

@@ -1,6 +1,8 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "PoseidonEditor.h"
+#include "PoseidonCommands.h"
+
 #include "Misc/Paths.h"
 #include "Interfaces/IPluginManager.h"
 #include "HAL/PlatformFilemanager.h"
@@ -62,15 +64,16 @@ void FPoseidonEditor::ExtendMenu()
 	MenuExtender = MakeShareable(new FExtender);
 
 	// Added section of mine 
-	MenuExtender->AddMenuExtension(
-		"TestPoseidon",
-		EExtensionHook::After,
-		PoseidonUICommands,
-		FMenuExtensionDelegate::CreateRaw(this, &FPoseidonEditor::AddPoseidonMainMenuExtension)
-	);
+	//MenuExtender->AddMenuExtension(
+	//	"Test",
+	//	EExtensionHook::After,
+	//	PoseidonUICommands,
+	//	FMenuExtensionDelegate::CreateRaw(this, &FPoseidonEditor::AddPoseidonFileMenuExtension)
+	//);
 
+	// Insert after 'Window' section
 	MenuExtender->AddMenuBarExtension(
-		"EditPoseidon",
+		"Window",
 		EExtensionHook::After,
 		PoseidonUICommands,
 		FMenuBarExtensionDelegate::CreateRaw(this, &FPoseidonEditor::AddPoseidonEditorMenu)
@@ -92,8 +95,8 @@ void FPoseidonEditor::AddPoseidonEditorMenu(FMenuBarBuilder& builder)
 
 void FPoseidonEditor::AddPoseidonMainMenuExtension(FMenuBuilder& builder)
 {
-	builder.BeginSection("Session", LOCTEXT("SessionLabel", "Session"));
-
+	builder.BeginSection("Poseidon", LOCTEXT("Poseidon Label", "Poseidon"));
+	builder.AddMenuEntry(FPoseidonCommands::Get().RebuildAllCommand);
 	// Insert UI commands below
 
 }
