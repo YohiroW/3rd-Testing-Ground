@@ -1,28 +1,16 @@
-#include "Common.ush"
+#include "/Engine/Public/Platform.ush"
 
-RWTexture2D<float4> OutputSurface;
-float4 SurfaceColor;
+float time;
 
-struct OceanInfoConstantBuffer
-{
-	float Time;
-}
-
-[numthreads(32,32,1)]
+[numthreads(32, 32, 1)]
 void PoseidonMainCS(uint3 ThreadId: SV_DispatchThreadID)
 {
 	// test
-	
-	float sizeX, sizeY;
-	OutputSurface.GetDimension(sizeX, sizeY);
-	
-	OceanInfoConstantBuffer info;
-	info.Time = OceanInfo.Time.x;
+	float sizeX = 1920.0f;
+	float sizeY = 1080.0f;
 	
 	float2 iRes = float2(sizeX, sizeY);
 	float2 uv = (ThreadId.xy/ iRes.xy)* 10.0f;
 	
-	float4 outputColor = float4(sin(uv.x+ info.Time), 1.0f);
-	
-	outputSurface[ThreadId.xy] = outputColor;	
+	float4 outputColor = float4(sin(uv.x+ time),sin(uv.y+ time), time, 1.0f);
 }
