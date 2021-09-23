@@ -55,6 +55,8 @@ void FPoseidonEditor::ExtendMenu()
 	if (IsRunningCommandlet())
 		return;
 
+	BindMenuCommands();
+
 	MenuExtender = MakeShareable(new FExtender);
 
 	// Added section of mine 
@@ -102,6 +104,21 @@ void FPoseidonEditor::AddPoseidonFileMenuExtension(FMenuBuilder& builder)
 
 }
 
+void FPoseidonEditor::BindMenuCommands()
+{
+	PoseidonUICommands = MakeShareable(new FUICommandList);
+
+	FPoseidonCommands::Register();
+	const FPoseidonCommands& commands = FPoseidonCommands::Get();
+
+	// 
+	PoseidonUICommands->MapAction(
+		commands.RebuildAllCommand,
+		FExecuteAction::CreateLambda([](){ return FPoseidonCommands::RebuildAll(); }),
+		FCanExecuteAction::CreateLambda([](){ return FPoseidonCommands::IsSessionValid(); })
+	);
+
+}
 
 
 #undef LOCTEXT_NAMESPACE

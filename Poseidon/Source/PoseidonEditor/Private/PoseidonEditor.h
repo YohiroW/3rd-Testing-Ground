@@ -73,6 +73,9 @@ public:
 	void AddPoseidonFileMenuExtension(FMenuBuilder& builder);
 	void AddPoseidonEditorMenu(FMenuBarBuilder& builder);
 //
+protected:
+	// Binds the commands used by the menus
+	void BindMenuCommands();
 
 private:
 
