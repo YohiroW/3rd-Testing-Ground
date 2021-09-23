@@ -40,8 +40,10 @@ bool FPoseidonEditor::IsInitialized()
 
 void FPoseidonEditor::StartupModule()
 {
-	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
+	ExtendMenu();
 
+	// Store the instance.
+	FPoseidonEditor::PoseidonEditorInstance = this;
 }
 
 void FPoseidonEditor::ShutdownModule()
