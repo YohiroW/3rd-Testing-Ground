@@ -18,12 +18,12 @@
 		{
 			"Name": "Poseidon",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "PostConfigInit"
 		},
 		{
 			"Name" : "PoseidonEditor",
 			"Type" : "Editor",
-			"LoadingPhase" : "PostEngineInit"
+			"LoadingPhase" : "Default"
 		}
 	]
 }
