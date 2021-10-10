@@ -31,5 +31,5 @@ bool FPoseidonCommands::IsSessionValid()
 
 void FPoseidonCommands::RebuildAll()
 {
-
+	UE_LOG(LogTemp, Warning, TEXT("TO BE IMPLEMENT.."));
 }
