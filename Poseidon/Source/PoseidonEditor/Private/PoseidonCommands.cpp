@@ -14,6 +14,7 @@
 #include "HAL/FileManager.h"
 #include "Modules/ModuleManager.h"
 #include "ISettingsModule.h"
+#include "PoseidonEditor.h"
 
 #define LOCTEXT_NAMESPACE "FPoseidonCommands"
 
@@ -31,5 +32,5 @@ bool FPoseidonCommands::IsSessionValid()
 
 void FPoseidonCommands::RebuildAll()
 {
-	UE_LOG(LogTemp, Warning, TEXT("TO BE IMPLEMENT.."));
+	UE_LOG(LogPoseidonEditor, Warning, TEXT("TO BE IMPLEMENT.."));
 }
