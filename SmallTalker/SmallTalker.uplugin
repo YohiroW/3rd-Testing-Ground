@@ -19,6 +19,11 @@
 			"Name": "SmallTalker",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		},
+		{
+			"Name" : "SmallTalkerEditor",
+			"Type" : "Editor",
+			"LoadingPhase" : "Default"
 		}
 	]
 }
