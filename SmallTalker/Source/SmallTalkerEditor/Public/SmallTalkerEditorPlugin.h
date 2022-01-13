@@ -1,9 +1,12 @@
-#include "ISmallTalkerEditorPlugin.h"
-#include "SmallTalkerEditorCommands.h"
+#pragma once
 
+#include "CoreMinimal.h"
 #include "PropertyEditorModule.h"
 #include "Modules/ModuleManager.h"
 #include "LevelEditor.h"
+#include "AssetTypeCategories.h"
+#include "IAssetTypeActions.h"
+#include "ISmallTalkerEditorPlugin.h"
 
 class FToolBarBuilder;
 class FMenuBuilder;
@@ -13,6 +16,8 @@ class FMenuBuilder;
 class FSmallTalkerEditorPlugin : public ISmallTalkerEditorPlugin
 {
 public:
+	static EAssetTypeCategories::Type GetAssetCategory() { return SmallTalkerAssetCategory; }
+
 	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
@@ -26,4 +31,8 @@ private:
 
 private:
 	TSharedPtr<class FUICommandList> PluginCommands;
+
+	static EAssetTypeCategories::Type SmallTalkerAssetCategory;
+
+	TArray<TSharedPtr<IAssetTypeActions>> CreatedAssetTypeActions;
 };

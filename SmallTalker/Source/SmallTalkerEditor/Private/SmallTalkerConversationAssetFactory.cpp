@@ -22,4 +22,9 @@ FText USmallTalkerConversationAssetFactory::GetToolTip() const
 	return LOCTEXT("SmallTalkerConversationTooltip", "Creates a default SmallTalker conversation asset");
 }
 
+bool USmallTalkerConversationAssetFactory::ShouldShowInNewMenu() const
+{
+	return true;
+}
+
 #undef LOCTEXT_NAMESPACE

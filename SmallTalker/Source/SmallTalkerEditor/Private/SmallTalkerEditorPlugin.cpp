@@ -6,6 +6,8 @@
 #include "Modules/ModuleManager.h"
 #include "LevelEditor.h"
 
+#include "AssetTypeActions_SmallTalkerConversation.h"
+
 class FToolBarBuilder;
 class FMenuBuilder;
 
@@ -13,11 +15,28 @@ class FMenuBuilder;
 
 IMPLEMENT_MODULE(FSmallTalkerEditorPlugin, SmallTalkerEditor)
 
+EAssetTypeCategories::Type FSmallTalkerEditorPlugin::SmallTalkerAssetCategory;
+
 void FSmallTalkerEditorPlugin::StartupModule()
 {
+	// Load necessary module
+	FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
+
+	IAssetTools& AssetTools = FModuleManager::LoadModuleChecked<FAssetToolsModule>("AssetTools").Get();
+
+#if NEED_CUSTOM_CATEGPRY
+	SmallTalkerAssetCategory = AssetTools.RegisterAdvancedAssetCategory(FName(TEXT("SmallTalker")), LOCTEXT("SmallTalkerAssetCategory", "Conversation"));
+#endif
+
+	// Helper lambda for registering asset type actions for automatic cleanup on shutdown
+	auto RegisterAssetTypeAction = [&](TSharedRef<IAssetTypeActions> Action)
 	{
-		FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
-	}
+		AssetTools.RegisterAssetTypeActions(Action);
+		CreatedAssetTypeActions.Add(Action);
+	};
+
+	// Register custom assets
+	RegisterAssetTypeAction(MakeShareable(new FAssetTypeActions_SmallTalkerConversation));
 
 	FSmallTalkerEditorCommands::Register();
 
