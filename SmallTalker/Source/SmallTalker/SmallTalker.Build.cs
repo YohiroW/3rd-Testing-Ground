@@ -14,15 +14,10 @@ public class SmallTalker : ModuleRules
 				// ... add public include paths required here ...
 			}
 			);
-				
-		
-		PrivateIncludePaths.AddRange(
-			new string[] {
-				// ... add other private include paths required here ...
-			}
-			);
-			
-		
+
+
+		PrivateIncludePaths.Add("SmallTalker/Private");
+
 		PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
@@ -43,13 +38,16 @@ public class SmallTalker : ModuleRules
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
-		
-		
-		DynamicallyLoadedModuleNames.AddRange(
-			new string[]
-			{
-				// ... add any modules that your module loads dynamically here ...
-			}
+
+
+		if (Target.bBuildEditor)
+		{
+			PrivateDependencyModuleNames.AddRange(
+				new string[] {
+					"SourceControl",
+					"UnrealEd"
+				}
 			);
+		}
 	}
 }
