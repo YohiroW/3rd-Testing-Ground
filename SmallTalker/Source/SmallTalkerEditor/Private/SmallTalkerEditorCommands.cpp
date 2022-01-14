@@ -11,10 +11,10 @@
 TArray<FString> GetPathByFileDialog()
 {
 	TArray<FString> OpenFileNames;
-	FString ExtensionStr = TEXT("*.*");
+	FString ExtensionStr = TEXT("*.xlsx");
 
 	IDesktopPlatform* DesktopPlatform = FDesktopPlatformModule::Get();
-	DesktopPlatform->OpenFileDialog(nullptr, TEXT("Explorer"), FPaths::ConvertRelativePathToFull(FPaths::ProjectDir()), TEXT(""), *ExtensionStr, EFileDialogFlags::None, OpenFileNames);
+	DesktopPlatform->OpenFileDialog(nullptr, TEXT("Explorer"), FPaths::ConvertRelativePathToFull(FPaths::ProjectDir()), TEXT(""), *ExtensionStr, EFileDialogFlags::Multiple, OpenFileNames);
 
 	return OpenFileNames;
 }
