@@ -63,6 +63,7 @@ void FSmallTalkerEditorPlugin::ShutdownModule()
 
 void FSmallTalkerEditorPlugin::ImportActionClicked()
 {
+	// Request file path
 
 
 }
@@ -77,15 +78,7 @@ void FSmallTalkerEditorPlugin::AddMenuBarExtension(FMenuBarBuilder& Builder)
 }
 
 void FSmallTalkerEditorPlugin::AddMenuExtension(FMenuBuilder& Builder)
-{
-	//Builder.BeginSection("Help", LOCTEXT("SmallTalkerMenu_Help", "Help"));
-	//Builder.AddMenuEntry(FSmallTalkerEditorCommands::Get().MarketplaceAction);
-	//Builder.AddMenuEntry(FSmallTalkerEditorCommands::Get().ForumsAction);
-	//Builder.AddMenuEntry(FSmallTalkerEditorCommands::Get().HelpAction);
-	//Builder.AddMenuEntry(FSmallTalkerEditorCommands::Get().IssuesAction);
-	//Builder.AddMenuEntry(FSmallTalkerEditorCommands::Get().DiscordAction);
-	//Builder.EndSection();
-	
+{	
 	Builder.BeginSection("Dev", LOCTEXT("SmallTalkerMenu_Dev", "Dev"));
 	Builder.AddMenuEntry(FSmallTalkerEditorCommands::Get().ImportAction);
 	Builder.EndSection();
@@ -93,3 +86,37 @@ void FSmallTalkerEditorPlugin::AddMenuExtension(FMenuBuilder& Builder)
 
 
 #undef LOCTEXT_NAMESPACE
+//
+//void FImportStringBundleContext::MakeContextMenu(const TArray<FName>& InSelectedAssetPaths, const FOnImportStringBundleRequested& InOnImportAssetRequested)
+//{
+//	const FCanExecuteAction CanExecuteAssetActionsDelegate = FCanExecuteAction::CreateLambda([NumSelectedAssetPaths = InSelectedAssetPaths.Num()]()
+//	{
+//		// We can execute asset actions when we only have a single asset path selected
+//		return NumSelectedAssetPaths == 1;
+//	});
+//
+//	const FName FirstSelectedPath = (InSelectedAssetPaths.Num() > 0) ? InSelectedAssetPaths[0] : FName();
+//
+//	// Import
+//	if (InOnImportAssetRequested.IsBound() && !FirstSelectedPath.IsNone())
+//	{
+//		{
+//			FToolMenuSection& Section = Menu->AddSection("ContentBrowserImportAsset", LOCTEXT("ImportAssetMenuHeading", "Import Asset"));
+//			Section.AddMenuEntry(
+//				"ImportAsset",
+//				FText::Format(LOCTEXT("ImportAsset", "Import to {0}..."), FText::FromName(FirstSelectedPath)),
+//				LOCTEXT("ImportAssetTooltip_NewAsset", "Imports an asset from file to this folder."),
+//				FSlateIcon(FEditorStyle::GetStyleSetName(), "ContentBrowser.ImportIcon"),
+//				FUIAction(
+//					FExecuteAction::CreateStatic(&FImportStringBundleContext::ExecuteImportAsset, InOnImportAssetRequested, FirstSelectedPath),
+//					CanExecuteAssetActionsDelegate
+//				)
+//			);
+//		}
+//	}
+//}
+//
+//void FImportStringBundleContext::ExecuteImportAsset(FOnImportStringBundleRequested InOnImportStringBundleRequested, FName InPath)
+//{
+//	InOnImportStringBundleRequested.ExecuteIfBound(InPath);
+//}
