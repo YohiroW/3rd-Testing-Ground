@@ -8,6 +8,8 @@
 #include "IAssetTypeActions.h"
 #include "ISmallTalkerEditorPlugin.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(LogSmallTalkerEditor, Log, All);
+
 class FToolBarBuilder;
 class FMenuBuilder;
 

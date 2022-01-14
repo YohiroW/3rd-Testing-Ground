@@ -18,9 +18,15 @@ public:
 	{
 	}
 
+	// Menu action to import string bundle
+	static void ImportStringBundle();
+
 	// TCommands<> interface
 	virtual void RegisterCommands() override;
 
 public:
 	TSharedPtr<FUICommandInfo> ImportAction;
+
+private:
+
 };

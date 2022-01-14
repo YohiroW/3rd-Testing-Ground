@@ -14,6 +14,7 @@ class FMenuBuilder;
 #define LOCTEXT_NAMESPACE "FSmallTalkerEditorModule"
 
 IMPLEMENT_MODULE(FSmallTalkerEditorPlugin, SmallTalkerEditor)
+DEFINE_LOG_CATEGORY(LogSmallTalkerEditor);
 
 EAssetTypeCategories::Type FSmallTalkerEditorPlugin::SmallTalkerAssetCategory;
 
@@ -44,7 +45,7 @@ void FSmallTalkerEditorPlugin::StartupModule()
 
 	PluginCommands->MapAction(
 		FSmallTalkerEditorCommands::Get().ImportAction,
-		FExecuteAction::CreateRaw(this, &FSmallTalkerEditorPlugin::ImportActionClicked),
+		FExecuteAction::CreateLambda([]() { return FSmallTalkerEditorCommands::ImportStringBundle(); }),
 		FCanExecuteAction());
 
 	FLevelEditorModule& LevelEditorModule = FModuleManager::LoadModuleChecked<FLevelEditorModule>("LevelEditor");
@@ -64,7 +65,6 @@ void FSmallTalkerEditorPlugin::ShutdownModule()
 void FSmallTalkerEditorPlugin::ImportActionClicked()
 {
 	// Request file path
-
 
 }
 

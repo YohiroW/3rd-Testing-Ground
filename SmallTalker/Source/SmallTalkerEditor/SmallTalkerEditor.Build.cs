@@ -10,7 +10,15 @@ public class SmallTalkerEditor : ModuleRules
 
 		OptimizeCode = CodeOptimization.Never;
 
-        PublicDependencyModuleNames.AddRange(
+		PublicIncludePaths.AddRange(
+			new string[] {
+				// ... add public include paths required here ...
+				"Runtime/Core/Public/Misc",
+				"Developer/DesktopPlatform/Public"
+			}
+			);
+
+		PublicDependencyModuleNames.AddRange(
             new string[]
             {
                 "Core",
