@@ -11,7 +11,7 @@
 TArray<FString> GetPathByFileDialog()
 {
 	TArray<FString> OpenFileNames;
-	FString ExtensionStr = TEXT("*.xlsx");
+	FString ExtensionStr = TEXT("*.csv");
 
 	IDesktopPlatform* DesktopPlatform = FDesktopPlatformModule::Get();
 	DesktopPlatform->OpenFileDialog(nullptr, TEXT("Explorer"), FPaths::ConvertRelativePathToFull(FPaths::ProjectDir()), TEXT(""), *ExtensionStr, EFileDialogFlags::Multiple, OpenFileNames);
@@ -21,7 +21,7 @@ TArray<FString> GetPathByFileDialog()
 
 void FSmallTalkerEditorCommands::RegisterCommands()
 {
-	UI_COMMAND(ImportAction, "Import with string bundle", "Import with Excel.", EUserInterfaceActionType::Button, FInputGesture());
+	UI_COMMAND(ImportAction, "Import with string bundle", "Import with csv.", EUserInterfaceActionType::Button, FInputGesture());
 }
 
 void FSmallTalkerEditorCommands::ImportStringBundle()
