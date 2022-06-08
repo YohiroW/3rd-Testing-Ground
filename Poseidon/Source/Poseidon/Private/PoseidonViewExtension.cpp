@@ -32,15 +32,13 @@ void FPoseidonViewExtension::SetupViewFamily(FSceneViewFamily& InViewFamily)
 		(
 			[this, PoseidonDataBuffer, PoseidonIndirectionBuffer](FRHICommandListImmediate& RHICmdList) mutable
 			{
-				FRHIResourceCreateInfo CreateInfoData;
+				FRHIResourceCreateInfo CreateInfoData(TEXT("PoseidonDataBuffer"));
 				CreateInfoData.ResourceArray = &PoseidonDataBuffer;
-				CreateInfoData.DebugName = TEXT("PoseidonDataBuffer");
 				DataBuffer = RHICreateStructuredBuffer(sizeof(FVector4), PoseidonDataBuffer.GetResourceDataSize(), BUF_StructuredBuffer | BUF_ShaderResource | BUF_Static, ERHIAccess::SRVMask, CreateInfoData);
 				DataSRV = RHICreateShaderResourceView(DataBuffer);
 
-				FRHIResourceCreateInfo CreateInfoIndirection;
+				FRHIResourceCreateInfo CreateInfoIndirection(TEXT("PoseidonIndirectionBuffer"));
 				CreateInfoIndirection.ResourceArray = &PoseidonIndirectionBuffer;
-				CreateInfoIndirection.DebugName = TEXT("PoseidonIndirectionBuffer");
 				IndirectionBuffer = RHICreateStructuredBuffer(sizeof(FVector4), PoseidonIndirectionBuffer.GetResourceDataSize(), BUF_StructuredBuffer | BUF_ShaderResource | BUF_Static, ERHIAccess::SRVMask, CreateInfoIndirection);
 				IndirectionSRV = RHICreateShaderResourceView(IndirectionBuffer);
 			}

@@ -6,6 +6,8 @@
 
 #define LOCTEXT_NAMESPACE "SmallTalkerConversation"
 
+#define NEED_CUSTOM_CATEGPRY 0
+
 FText FAssetTypeActions_SmallTalkerConversation::GetName() const
 {
 	return NSLOCTEXT("AssetTypeActions", "FAssetTypeActions_SmallTalkerConversation", "SmallTalker Conversation");
